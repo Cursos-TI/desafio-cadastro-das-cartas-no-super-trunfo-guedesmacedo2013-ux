@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    // Variáveis para atributos
+    int forcaJog, velocidadeJog, inteligenciaJog;
+    int forcaCPU, velocidadeCPU, inteligenciaCPU;
+    int escolha, valorJog, valorCPU;
+
+    // Inicializa gerador de números aleatórios
+    srand(time(NULL));
+
+    // Sorteio dos atributos do jogador
+    forcaJog = rand() % 100 + 1;        // 1 a 100
+    velocidadeJog = rand() % 100 + 1;
+    inteligenciaJog = rand() % 100 + 1;
+
+    // Sorteio dos atributos do computador
+    forcaCPU = rand() % 100 + 1;
+    velocidadeCPU = rand() % 100 + 1;
+    inteligenciaCPU = rand() % 100 + 1;
+
+    // Exibe carta do jogador
+    printf("=== SUA CARTA ===\n");
+    printf("Forca: %d\n", forcaJog);
+    printf("Velocidade: %d\n", velocidadeJog);
+    printf("Inteligencia: %d\n", inteligenciaJog);
+
+    // Jogador escolhe atributo
+    printf("\nEscolha o atributo para competir:\n");
+    printf("1 - Forca\n2 - Velocidade\n3 - Inteligencia\n");
+    scanf("%d", &escolha);
+
+    // Atribui valores escolhidos
+    if (escolha == 1) {
+        valorJog = forcaJog;
+        valorCPU = forcaCPU;
+        printf("\nComputador escolheu carta com Forca: %d\n", forcaCPU);
+    } else if (escolha == 2) {
+        valorJog = velocidadeJog;
+        valorCPU = velocidadeCPU;
+        printf("\nComputador escolheu carta com Velocidade: %d\n", velocidadeCPU);
+    } else if (escolha == 3) {
+        valorJog = inteligenciaJog;
+        valorCPU = inteligenciaCPU;
+        printf("\nComputador escolheu carta com Inteligencia: %d\n", inteligenciaCPU);
+    } else {
+        printf("Escolha invalida!\n");
+        return 0;
+    }
+
+    // Estruturas de decisão
+    if (valorJog > valorCPU) {
+        printf("\nVocê venceu! (%d vs %d)\n", valorJog, valorCPU);
+    } else if (valorJog < valorCPU) {
+        printf("\nComputador venceu! (%d vs %d)\n", valorCPU, valorJog);
+    } else {
+        printf("\nEmpate! (%d vs %d)\n", valorJog, valorCPU);
+    }
+
+    return 0;
+}
